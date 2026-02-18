@@ -1,9 +1,12 @@
-function StatCard({ title, value, icon }) {
+import './StatCard.css'
+
+function StatCard({ title, value, subtitle, icon, accent = 'purple' }) {
   return (
-    <div style={{ background: '#16213e', padding: '16px', borderRadius: '6px', flex: 1 }}>
-      <div style={{ fontSize: '20px', marginBottom: '6px' }}>{icon}</div>
-      <div style={{ color: 'white', fontSize: '20px', fontWeight: 'bold' }}>{value}</div>
-      <div style={{ color: '#888', fontSize: '13px', marginTop: '4px' }}>{title}</div>
+    <div className="stat-card">
+      <div style={{ fontSize: '24px', marginBottom: '8px' }}>{icon}</div>
+      <div style={{ fontSize: '22px', fontWeight: 'bold', color: 'white' }}>{value}</div>
+      <div style={{ color: '#aaa', fontSize: '13px', marginTop: '4px' }}>{title}</div>
+      {subtitle && <div style={{ color: '#666', fontSize: '12px', marginTop: '2px' }}>{subtitle}</div>}
     </div>
   )
 }

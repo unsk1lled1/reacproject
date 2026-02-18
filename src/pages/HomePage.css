@@ -1,10 +1,13 @@
 .dashboard {
   display: flex;
   min-height: 100vh;
+  background: #0a0a1a;
 }
 
 .dashboard__main {
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard__content {
@@ -12,7 +15,14 @@
 }
 
 .dashboard__stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.dashboard__chart-row {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 20px;
 }
