@@ -1,1 +1,227 @@
-/* available cards styles - TODO */
+.available-cards {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  min-height: 0;
+}
+
+.available-cards__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.available-cards__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.2rem;
+}
+
+.available-cards__subtitle {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+.available-cards__menu {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text-tertiary);
+}
+
+/* Credit Card Visual */
+.credit-card-stack {
+  position: relative;
+  margin: 2.5rem auto 0;
+  width: 100%;
+  max-width: 360px;
+  /* Ensure stack has height to contain absolute layers if needed,
+     but here we depend on the relative card to push height */
+}
+
+.credit-card-layer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  aspect-ratio: 1.586 / 1;
+  border-radius: 20px;
+}
+
+.credit-card-layer--1 {
+  background: rgba(255, 255, 255, 0.1);
+  top: -12px;
+  width: 94%;
+  z-index: 1;
+}
+
+.credit-card-layer--2 {
+  background: rgba(255, 255, 255, 0.05);
+  top: -24px;
+  width: 88%;
+  z-index: 0;
+}
+
+.credit-card {
+  background: var(--gradient-card);
+  border-radius: 20px;
+  padding: 1.25rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+  /* On top */
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  aspect-ratio: 1.586 / 1;
+  width: 100%;
+  /* Removed margin from here as it's on the stack now */
+  margin: 0;
+}
+
+.credit-card__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.credit-card__status {
+  background: white;
+  color: var(--accent-blue);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.credit-card__contactless {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+.credit-card__chip-group {
+  margin-bottom: 1rem;
+}
+
+.credit-card__chip {
+  width: 40px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.credit-card__number {
+  font-size: 1.25rem;
+  letter-spacing: 0.1em;
+  font-family: monospace;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.credit-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.credit-card__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.credit-card__label {
+  font-size: 0.65rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.credit-card__val {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.credit-card__brand {
+  display: flex;
+}
+
+.cc-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.cc-circle--red {
+  background: #eb001b;
+}
+
+.cc-circle--yellow {
+  background: #f79e1b;
+  margin-left: -12px;
+}
+
+
+.available-cards__limit {
+  margin-top: auto;
+}
+
+.available-cards__limit-text {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.available-cards__limit-label {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.available-cards__limit-val {
+  color: var(--text-tertiary);
+  font-size: 0.85rem;
+}
+
+.available-cards__limit-val b {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-right: 4px;
+}
+
+.available-cards__progress {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.available-cards__progress-fill {
+  height: 100%;
+  background: var(--accent-orange);
+  border-radius: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}

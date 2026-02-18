@@ -1,13 +1,23 @@
+import { MoreHorizontal } from 'lucide-react'
 import './StatCard.css'
 
 function StatCard({ title, value, subtitle, icon, accent = 'purple' }) {
   return (
-    <div className="stat-card">
-      <div style={{ fontSize: '24px', marginBottom: '8px' }}>{icon}</div>
-      <div style={{ fontSize: '22px', fontWeight: 'bold', color: 'white' }}>{value}</div>
-      <div style={{ color: '#aaa', fontSize: '13px', marginTop: '4px' }}>{title}</div>
-      {subtitle && <div style={{ color: '#666', fontSize: '12px', marginTop: '2px' }}>{subtitle}</div>}
-    </div>
+    <article className={`stat-card stat-card--${accent}`}>
+      <div className="stat-card__top">
+        <div className="stat-card__icon-wrapper">
+          {icon}
+        </div>
+        <div className="stat-card__main">
+          <div className="stat-card__value">{value}</div>
+          {subtitle && <div className="stat-card__desc">{subtitle}</div>}
+        </div>
+      </div>
+      <div className="stat-card__bottom">
+        <div className="stat-card__title">{title}</div>
+        <button type="button" className="stat-card__menu" aria-label="Меню"><MoreHorizontal size={18} /></button>
+      </div>
+    </article>
   )
 }
 
