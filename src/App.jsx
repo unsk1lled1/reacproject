@@ -1,8 +1,14 @@
-import './App.css'
-import AppRouter from './router/AppRouter'
+import { AuthProvider } from './context/AuthContext';
+import { ThemeProvider } from './context/ThemeContext';
+import AppRouter from './router/AppRouter';
+import './index.css';
 
-function App() {
-  return <AppRouter />
+export default function App() {
+  return (
+    <ThemeProvider>
+      <AuthProvider>
+        <AppRouter />
+      </AuthProvider>
+    </ThemeProvider>
+  );
 }
-
-export default App
