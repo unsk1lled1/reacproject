@@ -1,0 +1,22 @@
+import { Outlet, useLocation } from 'react-router-dom'
+import Header from '../components/Header'
+import Footer from '../components/Footer'
+import './MainLayout.css'
+
+function MainLayout() {
+  const location = useLocation()
+  if (location.pathname === '/') {
+    return <Outlet />
+  }
+  return (
+    <div className="layout">
+      <Header />
+      <main className="layout__content">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+export default MainLayout

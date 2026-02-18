@@ -1,0 +1,131 @@
+.debit-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: linear-gradient(145deg, #8b5cf6 0%, #6d28d9 50%, #5b21b6 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.35rem;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  min-height: 140px;
+}
+
+.debit-card__pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: 12px 12px;
+  pointer-events: none;
+}
+
+.debit-card__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  margin-bottom: auto;
+}
+
+.debit-card__top-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.debit-card__contactless {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+}
+
+.debit-card__contactless svg {
+  width: 100%;
+  height: 100%;
+}
+
+.debit-card__badge {
+  background: #fff;
+  color: #1f2937;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.debit-card__mastercard {
+  position: relative;
+  width: 40px;
+  height: 28px;
+}
+
+.debit-card__mc {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.debit-card__mc--red {
+  left: 0;
+  background: #eb001b;
+}
+
+.debit-card__mc--orange {
+  right: 0;
+  background: #f79e1b;
+  opacity: 0.95;
+}
+
+.debit-card__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  margin-top: 0.5rem;
+}
+
+.debit-card__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.debit-card__field:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.debit-card__label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  opacity: 0.85;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.debit-card__value {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.debit-card__field:last-child .debit-card__value {
+  letter-spacing: 0.15em;
+}
