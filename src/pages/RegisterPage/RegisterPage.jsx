@@ -5,43 +5,35 @@ import './AuthPage.css';
 
 export default function RegisterPage() {
     const [formData, setFormData] = useState({ name: '', email: '', password: '', confirmPassword: '' });
-    const [errors, setErrors] = useState({});
-    const [serverError, setServerError] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const { register } = useAuth();
     const navigate = useNavigate();
 
-    const validate = () => {
-        const errs = {};
-        if (!formData.name.trim()) errs.name = 'Введите имя';
-        if (!formData.email.trim()) errs.email = 'Введите email';
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) errs.email = 'Некорректный email';
-        if (!formData.password) errs.password = 'Введите пароль';
-        else if (formData.password.length < 6) errs.password = 'Минимум 6 символов';
-        if (formData.password !== formData.confirmPassword) errs.confirmPassword = 'Пароли не совпадают';
-        return errs;
-    };
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
-        if (errors[e.target.name]) {
-            setErrors({ ...errors, [e.target.name]: '' });
-        }
+        setErrorMessage('');
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setServerError('');
-        const errs = validate();
-        if (Object.keys(errs).length > 0) {
-            setErrors(errs);
+
+        if (!formData.name || !formData.email || !formData.password) {
+            setErrorMessage('Пожалуйста, заполните все поля');
             return;
         }
-        const result = register(formData);
-        if (result.success) {
-            navigate('/dashboard');
-        } else {
-            setServerError(result.error);
+
+        if (formData.password.length < 6) {
+            setErrorMessage('Пароль должен быть не меньше 6 букв или цифр');
+            return;
         }
+
+        if (formData.password !== formData.confirmPassword) {
+            setErrorMessage('Пароли не совпадают');
+            return;
+        }
+
+        register(formData);
+        navigate('/dashboard');
     };
 
     return (
@@ -52,21 +44,20 @@ export default function RegisterPage() {
                     <p className="auth-page__subtitle">Создайте аккаунт для доступа к платформе</p>
                 </div>
 
-                {serverError && <div className="auth-page__error-banner">{serverError}</div>}
+                {errorMessage && <div className="auth-page__error-banner">{errorMessage}</div>}
 
-                <form className="auth-form" onSubmit={handleSubmit} noValidate>
+                <form className="auth-form" onSubmit={handleSubmit}>
                     <div className="auth-form__group">
                         <label className="auth-form__label" htmlFor="name">Имя</label>
                         <input
                             id="name"
                             type="text"
                             name="name"
-                            className={`auth-form__input ${errors.name ? 'auth-form__input--error' : ''}`}
+                            className="auth-form__input"
                             placeholder="Ваше имя"
                             value={formData.name}
                             onChange={handleChange}
                         />
-                        {errors.name && <span className="auth-form__error">{errors.name}</span>}
                     </div>
 
                     <div className="auth-form__group">
@@ -75,12 +66,11 @@ export default function RegisterPage() {
                             id="email"
                             type="email"
                             name="email"
-                            className={`auth-form__input ${errors.email ? 'auth-form__input--error' : ''}`}
+                            className="auth-form__input"
                             placeholder="example@mail.ru"
                             value={formData.email}
                             onChange={handleChange}
                         />
-                        {errors.email && <span className="auth-form__error">{errors.email}</span>}
                     </div>
 
                     <div className="auth-form__group">
@@ -89,12 +79,11 @@ export default function RegisterPage() {
                             id="password"
                             type="password"
                             name="password"
-                            className={`auth-form__input ${errors.password ? 'auth-form__input--error' : ''}`}
+                            className="auth-form__input"
                             placeholder="Минимум 6 символов"
                             value={formData.password}
                             onChange={handleChange}
                         />
-                        {errors.password && <span className="auth-form__error">{errors.password}</span>}
                     </div>
 
                     <div className="auth-form__group">
@@ -103,12 +92,11 @@ export default function RegisterPage() {
                             id="confirmPassword"
                             type="password"
                             name="confirmPassword"
-                            className={`auth-form__input ${errors.confirmPassword ? 'auth-form__input--error' : ''}`}
+                            className="auth-form__input"
                             placeholder="Повторите пароль"
                             value={formData.confirmPassword}
                             onChange={handleChange}
                         />
-                        {errors.confirmPassword && <span className="auth-form__error">{errors.confirmPassword}</span>}
                     </div>
 
                     <button type="submit" className="auth-form__submit">Зарегистрироваться</button>
